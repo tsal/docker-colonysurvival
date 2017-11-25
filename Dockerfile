@@ -1,6 +1,6 @@
 FROM fedora:25
 MAINTAINER Michael King <mking@arikel.net>
-# based on image from MAINTAINER Alexander Trost <galexrt@googlemail.com>
+# based on image from MAINTAINER Alexander Trost <galexrt@googlemail.com> at galexrt/docker-steamcmd
 
 ENV STEAMCMD_PATH="/steamcmd"
 ENV STEAMCMD="$STEAMCMD_PATH/steamcmd.sh"

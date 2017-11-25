@@ -1,6 +1,6 @@
 @ShutdownOnFailedCommand 1
-@NoPromptForPassword 0
-login 
+@NoPromptForPassword 1
+login anonymous
 force_install_dir /data
-app_update 366090 validate
+app_update 748090 validate
 quit

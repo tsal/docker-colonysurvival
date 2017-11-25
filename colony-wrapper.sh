@@ -36,7 +36,7 @@ function getUserName {
 
 if [ isFirstRun ]; then
     # TODO: remove when anonymous install works
-    getUsername
+    getUserName
     installColonySurvival
     runFix || true # assume it's already been run
     touch /data/.first_run

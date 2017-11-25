@@ -9,7 +9,6 @@ function installColonySurvival {
     sed -i "s/@NoPromptForPassword 1/@NoPromptForPassword 0/g" /colony-install.steamcmd
     # TODO: end of removal section
     $STEAMCMD +runscript /colony-install.steamcmd
-    exit 0
 }
 
 function runFix {
@@ -38,8 +37,8 @@ if [ isFirstRun ]; then
     # TODO: remove when anonymous install works
     getUserName
     installColonySurvival
-    runFix || true # assume it's already been run
     touch /data/.first_run
 fi
 
+runFix
 runServer

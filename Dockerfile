@@ -7,4 +7,4 @@ ENV WRAPPER="$STEAMCMD_PATH/colony-wrapper.sh"
 COPY colony-wrapper.sh /steamcmd/colony-wrapper.sh
 COPY colony-install.steamcmd /colony-install.steamcmd
 
-ENTRYPOINT ["$WRAPPER"]
+ENTRYPOINT ["/steamcmd/colony-wrapper.sh"]

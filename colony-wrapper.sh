@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+# TODO: remove when anonymous install works
+export STEAM_USER
+
 function installColonySurvival {
+    # TODO: remove when anonymous install works
+    sed -i "s/login.*/login ${STEAM_USER}/g" /colony-install.steamcmd
+    sed -i "s/@NoPromptForPassword 1/@NoPromptForPassword 0/g" /colony-install.steamcmd
+    # TODO: end of removal section
     $STEAMCMD +runscript /colony-install.steamcmd
-    if [ $? = 5 ]; then
-        echo "Error! You have Steam Guard enabled but did not provide your key or something else went wrong!"
-        exit 1
-    fi
     exit 0
 }
 
@@ -25,7 +28,14 @@ function runServer {
     echo "Pass"
 }
 
+# TODO: remove when anonymous install works
+function getUserName {
+    echo -n "Steam Username:"
+    read STEAM_USER
+}
+
 if [ isFirstRun ]; then
+    # TODO: remove when anonymous install works
     getUsername
     installColonySurvival
     runFix || true # assume it's already been run

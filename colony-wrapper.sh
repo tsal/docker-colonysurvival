@@ -27,7 +27,7 @@ function isFirstRun {
 function runServer {
     echo "Starting Server with arguments: ${SCRIPT_ARGS}"
     cd /data/
-    mono colonyserverdedicated.exe $@
+    mono colonyserverdedicated.exe ${SCRIPT_ARGS}
 }
 
 # TODO: remove when anonymous install works
@@ -37,13 +37,11 @@ function getUserName {
 }
 
 if [ isFirstRun ]; then
-    echo "First run detected; command line arguments will be preserved by docker."
+    echo "First run detected, so we'll need information; command line arguments will be preserved by docker."
     # TODO: remove when anonymous install works
     getUserName
     installColonySurvival
     touch /data/.first_run
-    echo "Run docker start <container-name> to bring up the server."
-    exit 0
 fi
 
 runFix

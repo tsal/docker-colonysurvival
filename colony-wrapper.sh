@@ -36,8 +36,8 @@ function getUserName {
     read STEAM_USER
 }
 
-if [ isFirstRun ]; then
-    echo "First run detected, so we'll need information; command line arguments will be preserved by docker."
+if [ $(isFirstRun) ]; then
+    echo "Use 'anonymous' if this is not the first run."
     # TODO: remove when anonymous install works
     getUserName
     installColonySurvival

@@ -1,5 +1,5 @@
 @ShutdownOnFailedCommand 1
-@NoPromptForPassword 1
+@NoPromptForPassword 0
 login 
 force_install_dir /data
 app_update 366090 validate

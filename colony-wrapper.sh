@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-function getCredentials {
+export STEAM_USER=""
+
+function getUsername {
     echo -n "Steam Username:"
     read STEAM_USER
-    echo -n "Steam Password (not stored):"
-    read -s STEAM_PASS
-    echo -n "Steam Guard Code (empty if not used):"
-    read STEAM_GUARD
-    echo "${STEAM_USER} ${STEAM_PASS} ${STEAM_GUARD}"
+    echo $STEAM_USER
 }
 
 function installColonySurvival {
-    CREDENTIALS=$(getCredentials)
-    sed -i "s/login.*/login ${CREDENTIALS}/g" /colony-install.steamcmd
+    sed -i "s/login.*/login ${STEAM_USER}/g" /colony-install.steamcmd
     $STEAMCMD +runscript /colony-install.steamcmd
     if [ $? = 5 ]; then
         echo "Error! You have Steam Guard enabled but did not provide your key or something else went wrong!"
@@ -30,6 +27,7 @@ function isFirstRun {
 }
 
 if [ isFirstRun ]; then
+    getUsername
     installColonySurvival
     touch /data/.first_run
 fi
